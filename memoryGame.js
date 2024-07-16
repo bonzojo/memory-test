@@ -8,8 +8,12 @@ let ps = 0; // player score variable.
 
 // Sound config
 const playSound = (name) => {
-    var audio = new Audio("./resources/sounds/" + name + ".mp3");
-    audio.play();
+    try {
+        var audio = new Audio("./resources/sounds/" + name + ".mp3");
+        audio.play();
+    } catch (e) {
+        console.error("Error playing sound: ", e);
+    }
 };
 
 // Function to make CPU choice and add to the sequence
@@ -33,19 +37,27 @@ const playSequence = function() {
 // Player functionality
 $(".btn").on("click", function () {
     let userChosenAnimal = this.id;
-    userChoiceArray.push(userChosenAnimal);
-    playSound(userChosenAnimal);
-    animatePress(userChosenAnimal);
-    checkUserInput();
+    if (animalButtons.includes(userChosenAnimal)) {
+        userChoiceArray.push(userChosenAnimal);
+        playSound(userChosenAnimal);
+        animatePress(userChosenAnimal);
+        checkUserInput();
+    } else {
+        console.error("Invalid animal selected");
+    }
 });
+
 
 // Adds visual effect when user clicks image
 const animatePress = (userChosenAnimal) => {
-    $('#' + userChosenAnimal).addClass("pressed");
-    setTimeout(() => {
-        $('#' + userChosenAnimal).removeClass("pressed");
-    }, 100);
+    if (animalButtons.includes(userChosenAnimal)) {
+        $('#' + userChosenAnimal).addClass("pressed");
+        setTimeout(() => {
+            $('#' + userChosenAnimal).removeClass("pressed");
+        }, 100);
+    }
 };
+
 
 // Check to see if both arrays are the same length and match
 const checkUserInput = () => {
@@ -61,16 +73,16 @@ const checkUserInput = () => {
         if (match) {
             level += 1;
             ps += 50;
-            levelNum.innerHTML = level;
-            playerScore.innerHTML = ps;
+            levelNum.textContent = level;
+            playerScore.textContent = ps;
             userChoiceArray = [];
             setTimeout(cpuChoice, 1000);
         } else {
             console.log('You input the wrong sequence');
             level = 0;
             ps = 0;
-            levelNum.innerHTML = level;
-            playerScore.innerHTML = ps;
+            levelNum.textContent = level;
+            playerScore.textContent = ps;
             userChoiceArray = [];
             cpuArray = [];
         }
