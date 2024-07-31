@@ -19,6 +19,8 @@ body {
   position: absolute;
   border: solid 0.6em #693b93;
   border-radius: 1.6em;
+  margin-top: 2em;
+  margin-left: 6em;
 
 }
 
@@ -41,13 +43,14 @@ body {
   position: flex;
   font-size: 1.5rem;
   margin-top: 8em;
+  margin-left: 1em;
   border: solid #693b93 0.4em;
   border-radius: 2em;
   background-color: #452662;
 }
 
 .scores h3 {
-  margin: 0.4em;
+  margin: 0.6em;
   padding: 0.8em;
   border: solid silver;
   border-radius: 0.8em;
