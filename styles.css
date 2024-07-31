@@ -1,49 +1,72 @@
 
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color: #2f1943;
 }
 
 #title {
   font-family: 'Press Start 2P', cursive;
   font-size: 1.5rem;
-  margin:  2%;
-  color: #FEF2BF;
+  text-align: center;
+  padding: 0.4em;
+  border: #693b93 solid 0.2em;
+  background-color: #452662;
+  border-radius: 0.6em;
+  
 }
 
 .startGame {
-  width: 350px;
   position: absolute;
-  color: white;
-  margin-top: 100px;
-  margin-left: 70%;
+  border: solid 0.6em #693b93;
+  border-radius: 1.6em;
+
 }
 
 #startGameBtn {
-  background-color: silver;
-  -webkit-text-stroke: #011F3F 1px;
-  color: goldenrod;
-  border-radius: 15%;
-  border-color: black;
-  height: 120px;
-  width: 200px;
+  background-color: #452662;
+  border-radius: 1em;
+  height: 4em;
+  width: 8em;
   font-size: 1.6rem;
   font-family: 'Press Start 2p', cursive;
 }
 
+#startGameBtn:hover{
+  cursor: pointer;
+}
+
 .scores {
   font-family: 'Press Start 2p', cursive;
-  width: 350px;
-  position: absolute;
+  width: 16em;
+  position: flex;
   font-size: 1.5rem;
-  color: gold;
-  margin-top: 100px;
+  margin-top: 8em;
+  border: solid #693b93 0.4em;
+  border-radius: 2em;
+  background-color: #452662;
+}
+
+.scores h3 {
+  margin: 0.4em;
+  padding: 0.8em;
+  border: solid silver;
+  border-radius: 0.8em;
+  
+}
+
+.scores, #startGameBtn, #title {
+  color: #19fbff;
+  -webkit-text-stroke: 0.6px black;
+}
+
+.game-pad{
+  position: flex;
 }
 
 .btn {
   position: absolute;
-  height: 250px;
-  width: 250px;
+  height: 17.2em;
+  width: 17.2em;
   background-position: center;
   background-size: cover;
   top: 50%;
@@ -62,7 +85,6 @@ body {
   -webkit-border-radius: 250px 0 0 0;
   background-image: url('./resources/images/cow.jpg');
   margin: -250px 0px 0px -250px;
-
 }
 
 #donkey {
@@ -93,11 +115,16 @@ body {
 
 }
 
+#cow:hover, #donkey:hover, #monkey:hover, #pig:hover{
+  border: dashed 0.8em whitesmoke;
+  cursor: pointer;
+}
+
 .game-over {
   background-color: red;
   opacity: 0.8;
 }
 
 .pressed {
-  box-shadow: 0 0 100px white;
+  box-shadow: 0 0 3.5em whitesmoke;
 }
