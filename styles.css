@@ -4,6 +4,15 @@ body {
   background-color: #040512;
 }
 
+.flexContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
+  align-items: center;
+}
+
 #title {
   font-family: 'Press Start 2P', cursive;
   font-size: 1.5rem;
@@ -16,11 +25,11 @@ body {
 }
 
 .startGame {
-  position: absolute;
+  align-self: center;
+  margin-left: 1em;
   border: solid 0.6em #693b93;
   border-radius: 1.6em;
-  margin-top: 2em;
-  margin-left: 6em;
+  margin-top: 1.5em;
 
 }
 
@@ -38,11 +47,11 @@ body {
 }
 
 .scores {
+  align-self: center;
   font-family: 'Press Start 2p', cursive;
   width: 16em;
   font-size: 1.5rem;
-  margin-top: 8em;
-  margin-left: 1em;
+  margin-top: 1em;
   border: solid #693b93 0.4em;
   border-radius: 2em;
   background-color: #452662;
@@ -58,10 +67,10 @@ body {
 
 .memory{
   font-family: 'Press Start 2p', cursive;
+  margin-right: 1em;
   width: 16em;
   font-size: 1.5rem;
-  margin-top: -14em;
-  margin-left: 44em;
+  margin-top: 1em;
   border: solid #693b93 0.4em;
   border-radius: 2em;
   background-color: #452662;
@@ -86,6 +95,7 @@ body {
 
 .game-pad{
   position: flex;
+  margin: 6em 10em -42em 46em;
 }
 
 .btn {
