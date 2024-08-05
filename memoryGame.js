@@ -1,3 +1,36 @@
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const audioBuffers = {};
+
+const loadSound = (url) => {
+    return fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(data => audioContext.decodeAudioData(data))
+        .then(buffer => buffer)
+        .catch(e => console.error("Error loading sound: ", e));
+};
+
+const preloadSounds = () => {
+    const sounds = ['cow', 'donkey', 'monkey', 'pig'];
+    sounds.forEach(sound => {
+        loadSound(`./resources/sounds/${sound}.mp3`).then(buffer => {
+            audioBuffers[sound] = buffer;
+        });
+    });
+};
+
+preloadSounds();
+
+const playSound = (name) => {
+    const buffer = audioBuffers[name];
+    if (buffer) {
+        const source = audioContext.createBufferSource();
+        source.buffer = buffer;
+        source.connect(audioContext.destination);
+        source.start(0);
+    }
+};
+/* Using preloaded audio to stop crackling */
+
 const animalButtons = ['cow', 'donkey', 'monkey', 'pig'];
 let cpuArray = [];
 let userChoiceArray = [];
@@ -6,15 +39,8 @@ let levelNum = document.querySelector('#numOfLevels');
 let playerScore = document.querySelector('#playerScore');
 let ps = 0; // player score variable.
 
-// Sound config
-const playSound = (name) => {
-    try {
-        var audio = new Audio("./resources/sounds/" + name + ".mp3");
-        audio.play();
-    } catch (e) {
-        console.error("Error playing sound: ", e);
-    }
-};
+let memoryImage = document.getElementById('memimage');
+
 
 // Function to make CPU choice and add to the sequence
 const cpuChoice = function() {
@@ -75,6 +101,7 @@ const checkUserInput = () => {
             ps += 50;
             levelNum.textContent = level;
             playerScore.textContent = ps;
+            setMemoryImage(ps);
             userChoiceArray = [];
             setTimeout(cpuChoice, 1000);
         } else {
@@ -90,6 +117,20 @@ const checkUserInput = () => {
     }
 };
 
+const setMemoryImage = (score) => {
+    if(score >= 1 && score <= 100){
+        memoryImage.setAttribute('src', '/resources/images/goldfish.png');
+    } else if(score > 100 && score <= 300){
+        memoryImage.setAttribute('src', '/resources/images/dog.png');
+    } else if(score > 300 && score <= 500){
+        memoryImage.setAttribute('src', './resources/images/horse.png');
+    } else if(score > 500){
+        memoryImage.setAttribute('src', './resources/images/elephant.png');
+    } else {
+        memoryImage.setAttribute('src', '');
+    }
+};
+
 // Initialise game start
 const startGame = document.querySelector('#startGameBtn'); 
 startGame.addEventListener('click', () => {
@@ -97,5 +138,8 @@ startGame.addEventListener('click', () => {
     ps = 0;
     userChoiceArray = [];
     cpuArray = [];
+    setMemoryImage(ps);
     cpuChoice(); // Call this function to start the sequence
+    
 });
+

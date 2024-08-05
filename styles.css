@@ -1,7 +1,7 @@
 
 body {
   text-align: center;
-  background-color: #2f1943;
+  background-color: #040512;
 }
 
 #title {
@@ -40,7 +40,6 @@ body {
 .scores {
   font-family: 'Press Start 2p', cursive;
   width: 16em;
-  position: flex;
   font-size: 1.5rem;
   margin-top: 8em;
   margin-left: 1em;
@@ -49,7 +48,7 @@ body {
   background-color: #452662;
 }
 
-.scores h3 {
+.scores p {
   margin: 0.6em;
   padding: 0.8em;
   border: solid silver;
@@ -57,7 +56,30 @@ body {
   
 }
 
-.scores, #startGameBtn, #title {
+.memory{
+  font-family: 'Press Start 2p', cursive;
+  width: 16em;
+  font-size: 1.5rem;
+  margin-top: -14em;
+  margin-left: 44em;
+  border: solid #693b93 0.4em;
+  border-radius: 2em;
+  background-color: #452662;
+}
+
+.memory p{
+  margin: 0.6em;
+  padding: 0.8em;
+  border: solid silver;
+  border-radius: 0.8em;
+}
+
+.memory img{
+  height: auto;
+  width: 240px;
+}
+
+.scores, #startGameBtn, #title, .memory {
   color: #19fbff;
   -webkit-text-stroke: 0.6px black;
 }
