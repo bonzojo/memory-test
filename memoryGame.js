@@ -119,13 +119,13 @@ const checkUserInput = () => {
 
 const setMemoryImage = (score) => {
     if(score >= 1 && score <= 100){
-        memoryImage.setAttribute('src', './resources/images/goldfish.png');
+        memoryImage.setAttribute('src', '/resources/images/goldfish.png');
     } else if(score > 100 && score <= 300){
-        memoryImage.setAttribute('src', './resources/images/dog.png');
+        memoryImage.setAttribute('src', '/resources/images/dog.png');
     } else if(score > 300 && score <= 500){
-        memoryImage.setAttribute('src', './resources/images/horse.png');
+        memoryImage.setAttribute('src', '/resources/images/horse.png');
     } else if(score > 500){
-        memoryImage.setAttribute('src', './resources/images/elephant.png');
+        memoryImage.setAttribute('src', '/resources/images/elephant.png');
     } else {
         memoryImage.setAttribute('src', '');
     }
